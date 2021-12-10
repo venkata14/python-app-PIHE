@@ -16,7 +16,7 @@ hide_streamlit_style = """
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
             footer:after {
-                content:'Made my Venkata Patchigolla w/ Streamlit'; 
+                content:'Made by Venkata Patchigolla w/ Streamlit'; 
                 visibility: visible;
                 display: block;
                 position: absolute;
