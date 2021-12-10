@@ -1,6 +1,6 @@
 pandas==1.0.5
-streamlit==1.2.0
-re==2.2.1
-numpy==1.20.3
-requests==2.23.0
-urllib==3.7
+streamlit
+re
+numpy
+requests
+urllib
