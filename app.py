@@ -81,6 +81,7 @@ How does this app work?
 with look_up_container:
     st.write("Legislative LookUp")
     address = st.text_input("Address (Doesn't need to be specific. Ex: 'Storrs, CT' if your are from a small town.", placeholder="Address")
+    address = address + ' x'
 
     # Every form must have a submit button.
     # submitted = st.button("Submit")
