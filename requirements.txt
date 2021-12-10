@@ -2,4 +2,3 @@ pandas==1.0.5
 streamlit
 numpy
 requests
-urllib
