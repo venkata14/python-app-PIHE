@@ -270,7 +270,7 @@ if email_box_open:
         col1, col2, col3 = st.columns(3)
         who_to_email_map = [False, False, False]
         with col1:
-            if st.checkbox('Senetor ' + email_info_senetor1[2]):
+            if st.checkbox('Senetor ' + email_info_senetor1[2], value=True):
                 who_to_email_map[0] = True
         with col2:
             if st.checkbox('Senetor ' + email_info_senetor2[2]):
