@@ -182,6 +182,7 @@ Name,Title,Office,Address,Phone
 "Altounian, Denise",District Representative,"Costa, Jim - Fresno","855 M ST, SUITE 940",5594951620
 "Altree, Lilly",Legislative Correspondent,"Cline, Ben",2443 RHOB,2022255431
 "Alva, Alisa",Advisor,"McNerney, Jerry - Stockton","2222 GRAND CANAL BLVD, No. 7",2094768552
+"Alvarado Hueriga, Yesenia",Caseworker,"Gallego, Ruben - Phoenix","1601 N 7th St, Suite 310",6022560551
 "Alvarado, August",Deputy Chief Of Staff,"Carter, John R. - Round Rock","1717 N INTERSTATE HWY 35, SUITE 303",5122461600
 "Alvarado, Brenda","Caseworker, District Representative","Bonamici, Suzanne - Beaverton","12725 SW Millikan Way, Suite 220",5034696010
 "Alvarado, Clelia",Administrative Aide,"Committee on Appropriations - State, Foreign Operations, and Related Programs (Majority Staff)",HT2 CAPITOL,2022252041
@@ -577,7 +578,6 @@ Name,Title,Office,Address,Phone
 "Bean, Harleigh","Executive Assistant, Office Manager",Majority Leader (Steny H. Hoyer),H107 Capitol,2022253130
 "Beard, Gaye",Caseworker,"Fallon, Pat - Texarkana","2500 Robison Rd, Suite 190",9037167500
 "Beard, Hillary",Chief Of Staff,"Sewell, Terri A.",2201 RHOB,2022252665
-"Bearden, Lalique",Office Coordinator,"Rush, Bobby L. - Chicago","11750 S. Western Avenue, Chicago, IL  60643-4732",7737792400
 "Beattie, Nancy",Constituent Services Director,"Langevin, James R. - Warwick","SUMMIT SOUTH, 300 CENTERVILLE RD, SUITE 200",4017329400
 "Beatty, Paige",Director,Office of the Chief Administrative Officer - Child Care Center,1100 OHOB,2022269321
 "Beaudreau, Helen",Legislative Director,"Meng, Grace",2209 RHOB,2022252601
@@ -765,7 +765,6 @@ Name,Title,Office,Address,Phone
 "Bisson, Gabriel",Staff Assistant,Committee on Education and Labor (Minority Staff),2101 RHOB,2022254527
 "Bissonnette, Alicia",Legislative Assistant,"Schrier, Kim",1123 LHOB,2022257761
 "Bivens, Bobby",Executive Assistant,"Green, Al",2347 Rayburn House Office Building,2022257508
-"Bivins, Samantha",District Representative,"Horsford, Steven - Las Vegas","2250 Las Vegas Blvd N, Suite 500",7029639360
 "Bizzacco, Chris",District Director,"Cicilline, David N. - Pawtucket","1070 MAIN ST, SUITE 300",4017295600
 "Bjontegard, Hans",Staff Assistant,"Issa, Darrell",2300 RHOB,2022260316
 "Black, Dan",Chief Of Staff,"Dingell, Debbie",116 CHOB,2022254071
@@ -1034,7 +1033,7 @@ Name,Title,Office,Address,Phone
 "Brooks, Evan",Staff Assistant - Majority,"Committee on Science, Space, and Technology (Majority Staff)",2321 RHOB,2022256375
 "Brooks, Greg",Chief Of Staff,"Wenstrup, Brad R.",2419 RHOB,2022253164
 "Brooks, Kyle",Caseworker,"Gibbs, Bob - Canton",110 Central Plaza S,3307371631
-"Brooks, LaVontae",Legislative Director,"Horsford, Steven",562 CHOB,2022259894
+"Brooks, LaVontae","Deputy Chief Of Staff, Legislative Director","Horsford, Steven",562 CHOB,2022259894
 "Brooks, Tracy",Constituent Services,"Soto, Darren - Kissimmee",804 Bryan Street,4074521171
 "Broom, Keelie",Chief Of Staff,"Owens, Burgess",1039 LHOB,2022253011
 "Brotman, Michelle",Constituent Services Representative,"Jeffries, Hakeem S. - Central Brooklyn","55 Hanson Pl, Suite 603",7182372211
@@ -1340,7 +1339,6 @@ Name,Title,Office,Address,Phone
 "Carpio, Darlene",Regional Director,"Buck, Ken - Greeley","5626 19th St, Suite A",9707022136
 "Carr (Lynch), Brittany",Subcommittee Staff Director,Committee on Homeland Security - Intelligence and Counterterrorism (Majority Staff),176 FHOB,2022262616
 "Carr Johnson, Zakiya",Senior Professional Staff Member,Committee on Foreign Affairs (Majority Staff),2170 RHOB,2022255021
-"Carr, Christina",Communications Director,"Gallego, Ruben",1131 LHOB,2022254065
 "Carr, Colin","Deputy Chief, Legislative Director","Loudermilk, Barry",2133 RHOB,2022252931
 "Carr, Hannah",Professional Staff,Committee on House Administration (Majority Staff),1309 LHOB,2022252061
 "Carr, Josh",Senior Systems Engineer,Office of the Chief Administrative Officer - HIR - Enterprise Infrastructure/Telecommunications,H2-619 FHOB,5719213121
@@ -1361,6 +1359,7 @@ Name,Title,Office,Address,Phone
 "Carrillo, Manuel Joe",Director - Operations,House Democratic Caucus,B245 LHOB,2022251400
 "Carrillo, Marlyn",Press Secretary,"Vargas, Juan - Chula Vista","333 F St, Suite A",6194225963
 "Carrillo, Paulina","Executive Assistant, Scheduler","Gonzalez, Vicente",113 CHOB,2022252531
+"Carroll, Ishmael",Coordinator - Community Outreach,"Horsford, Steven - Las Vegas","2250 Las Vegas Blvd N, Suite 500",7029639360
 "Carroll, Jessica",Professional Staff,Committee on Armed Services (Staff Members),2340 RHOB,2022254440
 "Carroll, Patricia",Field Representative,"Green, Mark E. - Franklin","305 Public Square, Suite 212",6292236050
 "Carroll, Patrick","Constituent Services Director, Outreach Director","Pappas, Chris - Dover","660 Central Avenue, Suite 101",6032854300
@@ -1435,6 +1434,7 @@ Catherine Szpindor,Chief Administrative Officer,Office of the Chief Administrati
 "Cesaro, Victoria",Scheduler,"Harris, Andy",2334 RHOB,2022255311
 "Cespedes Baez, Rolando",Deputy District Director,"Espaillat, Adriano - Harlem","163 W 125th St, #508",2126633900
 "Cevasco, Marc",Chief Of Staff,"Lieu, Ted",403 CHOB,2022253976
+"Chaaban, Marc",Staff Assistant,"Gallego, Ruben",1131 LHOB,2022254065
 "Chace, Karen",Counselor,Office of the Chief Administrative Officer - Payroll and Benefits,B215 LHOB,2022257119
 "Chadwell, Alex",District Field Representative,"Nehls, Troy E. - Richmond","1117 FM 359, Suite 210",3467626600
 "Chaffin, Greg",Legislative Assistant - Military,"Slotkin, Elissa",1210 LHOB,2022254872
@@ -1803,7 +1803,6 @@ Catherine Szpindor,Chief Administrative Officer,Office of the Chief Administrati
 "Covington, Lauren","Legislative Assistant, Scheduler","Connolly, Gerald E.",2238 RHOB,2022251492
 "Cowan, Allie Beth","Office Manager, Scheduler","Pence, Greg",211 CHOB,2022253021
 "Cowan, Tonia",Executive Assistant,"Thompson, Bennie G. - Bolton","P.O. BOX 610, 107 W MADISON ST",6018669003
-"Coward, Taylor",Staff Assistant,"Rush, Bobby L. - Chicago",11750 S Western Ave,7737792400
 "Cox, Brandon",Chief Of Staff,"Lee, Susie",365 CHOB,2022253252
 "Cox, Bridget",Senior Systems Analyst,Office of the Chief Administrative Officer - HIR - Enterprise Applications,H2-B77 FHOB,2022266041
 "Cox, Caitlin","District Communications Coordinator, District Representative","Carbajal, Salud O. - San Luis Obispo ","1411 Marsh St, Suite 205",8055468348
@@ -1931,7 +1930,8 @@ Catherine Szpindor,Chief Administrative Officer,Office of the Chief Administrati
 "D'Antonio, David",Constituent Services Representative,"Reschenthaler, Guy - Washington",14 S Main St,7242064804
 "D'Orazio, Mike",Senior Legislative Assistant,"Reschenthaler, Guy",409 CHOB,2022257393
 "Dabney, Miranda",Communications Director,"Hern, Kevin",1019 LHOB,2022252211
-"Dadlani, Priya",Associate Counsel,Office of the Chief Administrative Officer - Employee Advocacy,377 FHOB,2022258800
+"Dacres, Bianca",Staff Assistant,"Horsford, Steven",562 CHOB,2022259894
+"Dadlani, Priya",Senior Associate Counsel,Office of the Chief Administrative Officer - Employee Advocacy,377 FHOB,2022258800
 "Dagul, Reid",Senior Legislative Aide,"Obernolte, Jay",1029 LHOB,2022255861
 "Dahl, Ryan",Media Logistics Coordinator,Office of the Chief Administrative Officer - House Radio and Television Gallery,H320,2022255214
 "Dahlen, Ashley",Press Secretary,"Schweikert, David",304 CHOB,2022252190
@@ -2029,7 +2029,6 @@ Catherine Szpindor,Chief Administrative Officer,Office of the Chief Administrati
 "Dawson, Earnestine",Digital Director,House Democratic Caucus,B245 LHOB,2022251400
 "Dawson, Kevin",Senior Legislative Assistant,"Kelly, Mike",1707 LHOB,2022255406
 "Dawson, Madeline",Press Assistant,"Donalds, Byron",523 CHOB,2022252536
-"Dawson, Mark",Legislative Director,"Aderholt, Robert B.",266 CHOB,2022254876
 "Day, Jonathan",Chief Of Staff,"Wilson, Joe",1436 LHOB,2022252452
 "Dayemo, Tiffany",Policy Analyst,Committee on Foreign Affairs (Majority Staff),2170 RHOB,2022255021
 "Dayer, Jordan",Floor Assistant,Minority Leader (Kevin McCarthy),H204 Capitol,2022254000
@@ -4022,7 +4021,6 @@ Douglas N. Letter,House General Counsel,Office of General Counsel,5140 O'Neill H
 "Ilaria, Jessica",Senior Policy Advisor,"Harder, Josh",209 CHOB,2022254540
 "Iley, Chandler",ADA Aide,Office of the Chief Administrative Officer - Office of the Chief Human Resources Officer,102 FHOB,2022252926
 "Ilog, Angela",Resource Manager,Office of the Chief Administrative Officer - Office of Acquisitions Management,5110 OHOB,2022252921
-"Imam, Alyssa",Legislative Correspondent,"Horsford, Steven",562 CHOB,2022259894
 "Ince, Cara",Director - Research,"Cooper, Jim - Nashville",605 CHURCH ST,6157365295
 "Incerto, Jacquelyn",Legislative Assistant,"Miller, Carol D.",465 CHOB,2022253452
 "Inderfurth, Alison",Deputy Chief Of Staff,"Perlmutter, Ed",1226 LHOB,2022252645
@@ -4367,6 +4365,7 @@ Joseph Picolla (Acting),Inspector General of the House,Office of Inspector Gener
 "Katipamula, Shanta",Legislative Aide,"DelBene, Suzan K.",2330 RHOB,2022256311
 "Katsnelson, Sara",Legislative Correspondent,"Sherman, Brad",2181 RHOB,2022255911
 "Katz, Alexander",District Communications Director,"Lee, Barbara - Oakland","1 Kaiser Plaza, SUITE 1080",5107630370
+"Katz, Daniel",Senior Counsel,Office of the Chief Administrative Officer - Employee Advocacy,377 FHOB,2022258800
 "Katz, Hannah",Scheduler,"DeGette, Diana - Denver","600 GRANT ST, SUITE 202",3038444988
 "Katz, Joel",District Director,"Clyde, Andrew S. - Gainesville","210 Washington St NW, Suite 202",4707686520
 "Katz, Rachel",Casework Manager,"Herrera Beutler, Jaime - Vancouver","750 ANDERSON ST, SUITE B",3606956292
@@ -4809,6 +4808,7 @@ Joseph Picolla (Acting),Inspector General of the House,Office of Inspector Gener
 "Lee, Eileen",District Staff Assistant,"Levin, Mike - Dana Point","33282 Golden Lantern, Suite 102",9492812449
 "Lee, Hanah",District Office Manager,"Omar, Ilhan - Minneapolis","404 3rd Ave N, Suite 203",6123331272
 "Lee, Isabella",District Scheduler,"Quigley, Mike - Chicago",3223 N. Sheffield,7732675926
+"Lee, Katherine",Legislative Director,"Norcross, Donald",2427 RHOB,2022256501
 "Lee, Katie",Legislative Counsel,"Langevin, James R.",2077 RHOB,2022252735
 "Lee, Matt",Chief Of Staff,"Ross, Deborah K.",1208 LHOB,2022253032
 "Lee, Nga",Staff Accountant,Office of the Chief Administrative Officer - Accounting,3110 OFOB,2022254538
@@ -5558,7 +5558,7 @@ Matthew A. Wasniewski,House Historian,Office of the House Historian,"Jefferson B
 "Medema, Bryan",Assistant To The General Counsel,Committee on Financial Services (Majority Staff),2129 RHOB,2022254247
 "Medina, Josie",Constituent Services Director,"Grijalva, Raúl M. - Tucson",101 W IRVINGTON RD,5206226788
 "Medina, Rob",Director - Military and Community Relations,"Posey, Bill - Melbourne","2725 Judge Fran Jamieson Way, Bldg C",3216321776
-"Medley, Megan",Deputy Legislative Director,"Aderholt, Robert B.",266 CHOB,2022254876
+"Medley, Megan",Legislative Director,"Aderholt, Robert B.",266 CHOB,2022254876
 "Medlock, Sam",Senior Counsel,Select Committee on the Climate Crisis (Staff),359 FHOB,2022251106
 "Medzhibovsky, Boris",Chief Of Staff,"Aguilar, Pete - San Bernardino","685 East Carnegie Drive, Suite 100",9098904445
 "Mee, Eric",Communications Director,"Levin, Mike",1030 LHOB,2022253906
@@ -5835,7 +5835,7 @@ Matthew A. Wasniewski,House Historian,Office of the House Historian,"Jefferson B
 "Moore, Tracy",Digital Assistant,"Bourdeaux, Carolyn",1319 LHOB,2022254272
 "Moore, William",Senior Constituent Services Representative,"Murphy, Gregory F. - Greenville",1105-C CORPORATE DR,2529311003
 "Moorer, Gerard",Deputy District Director,"Davis, Danny K. - Chicago",2813-15 W Fifth Ave,7735337520
-"Mora, Maggie",District Representative,"Horsford, Steven - Las Vegas","2250 Las Vegas Blvd N, Suite 500",7029639360
+"Mora, Maggie","District Representative, Immigration Specialist","Horsford, Steven - Las Vegas","2250 Las Vegas Blvd N, Suite 500",7029639360
 "Mora, Teresa",Director of Outreach and Member Services,"Steil, Bryan - Janesville",20 S. Main St.,6087524050
 "Mora-Castrellon, Christian",Congressional Assistant,"Lofgren, Zoe - San Jose","635 N FIRST ST, SUITE B",4082718700
 "Morales Gomez, Jose",Staff Assistant,Committee on House Administration (Majority Staff),1313 LHOB,2022252061
@@ -6572,6 +6572,7 @@ Matthew A. Wasniewski,House Historian,Office of the House Historian,"Jefferson B
 "Peterson, Miranda",Legislative Assistant,"Pallone, Frank Jr.",2107 RHOB,2022254671
 "Peterson, Steven",Senior Legislative Assistant,"Suozzi, Thomas R.",407 CHOB,2022253335
 "Peterson, Vincent",Liaison - Community Affairs,"Ryan, Tim - Warren",197 W MARKET ST,3303730074
+"Petit, Jacques",Communications Director,"Gallego, Ruben",1131 LHOB,2022254065
 "Petrick, David",Research Associate,Congressional-Executive Commission on the People's Republic of China (Commission Staff),243 FHOB,2022263766
 "Petroccione, Kevin",Legislative Assistant,"Fitzgerald, Scott",1507 LHOB,2022255101
 "Pettaway, Katonya",Office Director,"Murphy, Gregory F.",313 CHOB,2022253415
@@ -6648,6 +6649,7 @@ Matthew A. Wasniewski,House Historian,Office of the House Historian,"Jefferson B
 "Pisano, Will",Senior Legislative Aide,"Kuster, Ann M.",320 CHOB,2022255206
 "Pitman, Lacey",Constituent Services Representative,"Mullin, Markwayne - McAlester","1 E Choctaw Ave, Suite 175",9184235951
 "Pittard, Kristopher",Legislative Assistant,"Casten, Sean",2440 RHOB,2022254561
+"Pittard, Kristopher",Senior Policy Advisor,"Rush, Bobby L.",2188 RHOB,2022254372
 "Pittman, Anthony",Assistant,"Norcross, Donald - Cherry Hill","10 Melrose Ave, Suite 210",8564277000
 "Pittman, Brehon","Caseworker, Field Representative","
               (OH11)
@@ -7190,7 +7192,6 @@ Ralph V. Seep,House Law Revision Counsel,Office of the Law Revision Counsel,H2-3
 "Rosado, Mary",Chief Of Staff,"Barr, Andy",2430 RHOB,2022254706
 "Rosales, Jazmin",Constituent Services Specialist,"Cárdenas, Tony - Panorama City","9612 Van Nuys Blvd, Suite 201",8182213718
 "Rosario, Maritza",Staff Assistant,"Velázquez, Nydia M. - Brooklyn","266 BROADWAY, SUITE 201",7185993658
-"Rosas, Henry",Staff Assistant,"Gallego, Ruben - Phoenix","1601 N 7th St, Suite 310",6022560551
 "Rosati, Koray",Legislative Correspondent,"Auchincloss, Jake",1524 LHOB,2022255931
 "Rose, Ridge","Caseworker, Digital Assistant","LaTurner, Jake - Topeka",3550 SW 5th St,7852055253
 "Rose, Thomas",Supervisor - Logistics and Distribution,Office of the Chief Administrative Officer - Logistics,WA16 RHOB,2022259474
@@ -7342,7 +7343,7 @@ Ralph V. Seep,House Law Revision Counsel,Office of the Law Revision Counsel,H2-3
 "Sager, Jemma",Outreach Representative,"Schrier, Kim - Issaquah","1445 NW Mall St, Suite 4",4256571001
 "Sagul, Peggy",Constituent Services,"Bishop, Sanford D. Jr. - Columbus","18 Ninth St, Suite 201",7063209477
 "Saheb, Zahraa",Legislative Director,"Escobar, Veronica",1505 LHOB,2022254831
-"Saint, Cros",Staff Assistant,"Horsford, Steven",562 CHOB,2022259894
+"Saint, Cros",Legislative Aide,"Horsford, Steven",562 CHOB,2022259894
 "Saiyady, Ishtar",Casework Manager,"Harder, Josh - Modesto",4701 Sisk Rd,2095795458
 "Saji, Stancy",Deputy District Director,"Meng, Grace - Flushing",40-13 159th St,7183586364
 "Sakaluk, Andre",Special Advisor,Office of the Chief Administrative Officer,HB28 Capitol,2022255555
@@ -7669,6 +7670,7 @@ Ralph V. Seep,House Law Revision Counsel,Office of the Law Revision Counsel,H2-3
 "Sherrill, Savanna",Constituent Services Representative,"Budd, Ted - Advance","128 Peachtree Ln, Suite A",3369981313
 "Sherrod, Jay",Field Representative,"Crawford, Eric A. ""Rick"" - Cabot",112 S First St,5018433043
 "Sheu, Karen",Coordinator - Constituent Services,"Porter, Katie - Orange County","2151 Michelson Dr, Suite 195",9496686600
+"Shevin-Coetzee, Michelle",Legislative Assistant - Military,"Gallego, Ruben",1131 LHOB,2022254065
 "Shields, Brendan",Staff Director - Minority,Committee on Foreign Affairs (Minority Staff),2120 RHOB,2022268467
 "Shields, Michaela",Staff Assistant,Committee on Ways and Means (Majority Staff),1102 LHOB,2022253625
 "Shields, Olivia",Communications Director,Committee on Energy and Commerce (Minority Staff),2322A RHOB,2022253641
@@ -7891,7 +7893,6 @@ Ralph V. Seep,House Law Revision Counsel,Office of the Law Revision Counsel,H2-3
 "Sollazzo, Amanda",Executive Assistant,"Graves, Sam",1135 LHOB,2022257041
 "Sollers, Danielle",Counselor,Office of the Chief Administrative Officer - Payroll and Benefits,B215 LHOB,2022260048
 "Solock, Mark",Legal Counsel,"Quigley, Mike - Chicago",4345 N Milwaukee Ave,7732675926
-"Solomon, Feven",Legislative Assistant,"Horsford, Steven",562 CHOB,2022259894
 "Solomon, Tamara",Assistant Director,Office of Inspector General,H2-386 FHOB,2022261250
 "Solomon, William",Business Process Application Specialist,Office of the Chief Administrative Officer - HIR - Enterprise Applications,H2-B62 FHOB,2022266263
 "Solorzano, Willis",Apprentice Cabinet Maker,Office of the Chief Administrative Officer - Furnishings,WA25 RHOB,2022258000
@@ -8025,7 +8026,6 @@ Ralph V. Seep,House Law Revision Counsel,Office of the Law Revision Counsel,H2-3
 "Steinberg, Ted",Senior Legislative Assistant,"Boyle, Brendan F.",1133 LHOB,2022256111
 "Steinmann, Brandon",District Director,"Brady, Kevin - Conroe","200 RIVER POINTE DR, SUITE 304",9364415700
 "Steinmuller, April",Administrative Specialist,Office of the Chief Administrative Officer - House Recording Studio,2010 RHOB,2022253941
-"Stelzner, Jack",Digital Press Secretary,"Horsford, Steven",562 CHOB,2022259894
 "Stepahin, Alex",Legislative Assistant,"Arrington, Jodey C.",1107 LHOB,2022254005
 "Stepahin, Alex",Senior Legislative Assistant,"Bishop, Dan",1207 LHOB,2022251976
 "Stephanou, Scott",Chief Of Staff,"Larson, John B.",1501 LHOB,2022252265
@@ -8714,7 +8714,6 @@ The Honorable William J. Walker,Sergeant at Arms,Office of the Sergeant at Arms,
 "Vogt, Justin",Subcommittee Staff Director,Committee on Veterans' Affairs - Economic Opportunity (Majority Staff),364 CHOB,2022259756
 "Vogt, Katelynn",Communications Director,"Price, David E.",2108 RHOB,2022251784
 "Vogt, Lori",Staff Assistant,"Gohmert, Louie",2269 RHOB,2022253035
-"Vogt, William ""Willie""",Legislative Aide,"Rush, Bobby L.",2188 RHOB,2022254372
 "Vojack, Patricia",Legislative Director,"Fallon, Pat",1118 LHOB,2022256673
 "Von Harders, Kimberly",Service Manager,Office of the Chief Administrative Officer - HIR - Technology Governance and Compliance,H2-644A FHOB,2022266048
 "Von Schnell, Ahren",Constituent Liaison,"Stefanik, Elise M. - Plattsburgh","137 Margaret St, Suite 100",5185612324
@@ -9042,6 +9041,7 @@ Wade Ballou,House Legislative Counsel,Office of the Legislative Counsel,H2-337 F
 "Wilcox, Faith",Legislative Assistant,"Scanlon, Mary Gay",1227 LHOB,2022252011
 "Wilcox, Johnathan",Communications Director,"Issa, Darrell",2300 RHOB,2022261806
 "Wilcox, Libbie",Communications Director,"Maloney, Sean Patrick",464 CHOB,2022255441
+"Wilcoxen, Matts",Legislative Assistant - Military,"Horsford, Steven",562 CHOB,2022259894
 "Wilcoxson, Sam",Legislative Assistant,"Larsen, Rick",2163 RHOB,2022252605
 "Wilder, Donald",Senior Systems Engineer,Office of the Chief Administrative Officer - HIR - Enterprise Infrastructure/Telecommunications,Site 3,5719213123
 "Wiles, Martie",Senior Field Representative,"Comer, James - Paducah",300 S 3rd St,2704081865
@@ -9239,7 +9239,6 @@ Wade Ballou,House Legislative Counsel,Office of the Legislative Counsel,H2-337 F
 "Wriston, Blair",Senior Policy Advisor,"McEachin, A. Donald",314 CHOB,2022256365
 "Wroten, Desiree",Director - Operations,"Takano, Mark",420 CHOB,2022252305
 "Wu, Tonia",Policy Advisor,House Democratic Caucus,B245 LHOB,2022251400
-"Wunderlich, Dan",Press Secretary,"Aderholt, Robert B.",266 CHOB,2022254876
 "Wurzburg, Thea",Constituent Services Representative,"Welch, Peter - Burlington","128 Lakeside Ave, Suite 235",8026522450
 "Wykowski, Henry",Professional Staff,"Committee on Natural Resources - National Parks, Forests, and Public Lands (Majority Staff)",1328 LHOB,2022256065
 "Wyma-Bradley, Amanda",Legislative Assistant,"Smith, Adam",2264 RHOB,2022258901

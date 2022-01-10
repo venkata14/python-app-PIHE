@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import requests
 import urllib.parse
-# import streamlit.components.v1 as components
+import streamlit.components.v1 as components
 # from streamlit import legacy_caching
 
 # Page styling
@@ -16,7 +16,7 @@ hide_streamlit_style = """
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
             footer:after {
-                content:'Made by Venkata Patchigolla w/ Streamlit'; 
+                content:'Made w/ Streamlit'; 
                 visibility: visible;
                 display: block;
                 position: absolute;
@@ -24,6 +24,9 @@ hide_streamlit_style = """
                 #background-color: red;
                 padding: 5px;
                 top: 2px;
+            }
+            code {
+                white-space : pre-wrap !important;
             }
             </style>
             """
@@ -36,7 +39,7 @@ df = pd.read_csv('employees.csv')
 
 # For the senetors
 gsheetid = "1dDOJi4lSnZqEo27hKOVGY2047952aili5LgNe5jrF7E"
-sheet_name = "Emails"
+sheet_name = "Senator_Emails"
 template_sheet_name = "Templates"
 gsheet_url = "https://docs.google.com/spreadsheets/d/{}/gviz/tq?tqx=out:csv&sheet={}".format(gsheetid, sheet_name)
 template_email_url = "https://docs.google.com/spreadsheets/d/{}/gviz/tq?tqx=out:csv&sheet={}".format(gsheetid, template_sheet_name)
@@ -44,14 +47,12 @@ df_sen = pd.read_csv(gsheet_url)
 
 # For the template email and subject
 try:
-    df_template = pd.read_csv(template_email_url)
-
-    # Templates
-    template_email = df_template['Email Template'].tolist()[0]
-
-    subject = df_template['Subject'].tolist()[0]
+    df_template = pd.read_csv(template_email_url, index_col='Template_Name')
+    
+    templates = df_template.columns
 except:
-    st.write("There was an eroor retrieving the PIHE templates")
+    st.write("There was an error retrieving the PIHE templates")
+    templates = None
     template_email = """Dear {0},
  
 My name is {1}, and I am a constituent from {2} interested in access to health care in the U.S. and globally. I also volunteer with Partners In Health Engage, which is a grassroots network of citizens advocating for health care.
@@ -73,6 +74,59 @@ found_reps = False
 global email_box_open
 email_box_open = False
 normalized_address = None
+email_submitted = False # This is for opening up the email editor
+
+st.sidebar.markdown("""
+# Scheduling Meetings with MOCs
+
+---
+
+### What is the purpose of this app?
+
+> *The purpose of this app is to quickly allow constituents to create/send an email to schedule a meeting with their members of congress (MOCs) through the MOC's scheduler. The app does this without the constituent having to go through the hassle of finding their representatives, schedulers and the scheduler's email. *
+
+---
+
+### How does this app work?
+
+> *After you fill out the form, the app will generate a link for 3 email platforms (Gmail, Outlook, Yahoo). When you click on the link, it will open the preferred email platform with all details for the email filled out. All that is there to do at that point will be to click 'Send'!*
+
+---
+
+### How do I use this app?
+
+*Note, this app only works as intended on laptop/desktop.*
+
+1. Type in your street address.
+2. If there is more than one scheduler for a MOC, choose the desired scheduler and click "Email".
+3. Choose the MOC you would like to email.
+4. Pick a template for your email.
+5. Fill in your information.
+    - You need to enter your name and email to be able to generate the email link below.
+6. Edit the template.
+    - The areas to edit are highlighted with '[' and ']'.
+    - An email link will not be generated if there is a '[' or ']' in your message.
+7. Click 'Generate Email Link'.
+    - This will create a link for Gmail, Outlook and Yahoo Mail.
+8. Click on your preferred email platform. 
+    - When you click on the Gmail link for example, it will open a new Gmail tab with your message autofilled.
+9. Finish editing your email in your preferred email platform.
+10. Send your email to the scheduler!
+
+---
+
+### What are the available templates for this app?
+
+> *Currently, the only templates for this app are from [Partner In Health Engage](https://www.pih.org/organize).*
+
+---
+
+### Thank you for using this app! If there are any issues, please [contact us here](mailto:p.venkata32@yahoo.com).
+
+### Good luck with your advocacy :)
+
+""")
+
 
 # Format the layout
 introduction = st.container()
@@ -84,27 +138,15 @@ email_box = st.container()
 
 
 with introduction:
-    # Notes on How this works
-    st.markdown("""
-# Demo
-
-How does this app work?
-
-*Note* Only the House of Reps works at this time.
-
-1. Type in your address. Does not need to be an exact address. If it throws an error, it requires a more accurate address.
-2. Choose who to email and click the "Email"
-3. Type your name and email.
-4. Edit your template.
-5. Click on "Generate Email Link".
-6. Click on the link generated. It currently only works for Gmail. It opens a new tab and autofills the emails section.
-""")
-    st.title("PIHE App - Scheduling Meetings with MOCs")
+    st.title("MOC Scheduler App")
     
 # Get address
 with look_up_container:
-    st.write("Legislative LookUp")
-    address = st.text_input("Address (Doesn't need to be specific. Ex: 'Storrs, CT' if your are from a small town.", placeholder="Address")
+    st.write("## ")
+    st.write("#### ")
+    st.write("## 1. Enter your address")
+    st.markdown("---")
+    address = st.text_input("Address (Does not need to be specific)", placeholder="Address")
     address = address
 
     # Every form must have a submit button.
@@ -152,7 +194,6 @@ def get_mocs():
             representative1 = representative_info[0]['name']
             
             found_reps = True
-            st.write(response_json)
             
             return senetor1, senetor2, representative1, found_reps, normalized_address
         except requests.exceptions.Timeout:
@@ -178,7 +219,7 @@ if found_reps:
         col1, col2, col3 = st.columns(3)
         
         with col1:
-            st.header("First Senator")
+            st.write("### First Senator")
             last_name = senetor1.split()[-1].capitalize()
             # Filtering the results to the senetor of interest
             office_data = df_sen[df_sen['Congressional member'].str.lower().str.contains(last_name.lower())]
@@ -188,12 +229,12 @@ if found_reps:
             s_last_name = scheduler.split()[1]
             scheduler_email = office_data['Email'].tolist()[0]
             st.info(''.join(["##### ", senetor1, '\n', 'Scheduler: ', scheduler]))
-            st.dataframe(office_data)
+            # st.dataframe(office_data)
             email_box_open= True
             email_info_senetor1 = [scheduler_email, 'senator1', last_name, s_first_name, s_last_name]
             
         with col2:
-            st.header("Second Senator")
+            st.write("### Second Senator")
             last_name = senetor2.split()[-1].capitalize()
             # Filtering the results to the senetor of interest
             office_data = df_sen[df_sen['Congressional member'].str.lower().str.contains(last_name.lower())]
@@ -203,15 +244,15 @@ if found_reps:
             s_last_name = scheduler.split()[1]
             scheduler_email = office_data['Email'].tolist()[0]
             st.info(''.join(["##### ", senetor2, '\n', 'Scheduler: ', scheduler]))
-            st.dataframe(office_data)
+            # st.dataframe(office_data)
             email_box_open= True
             email_info_senetor2 = [scheduler_email, 'senator2', last_name, s_first_name, s_last_name]
         
         with col3:
             last_name = representative1.split()[-1].capitalize()
             office_data = df[df["Office"].str.contains(last_name)]
-            st.header("Representative")
-            st.info(''.join(["##### ", representative1, '\n', 'Scheduler: ', ]))
+            st.write("### Representative")
+            st.info(''.join(["##### ", representative1, '\n', 'Scheduler: Choose one down below', ]))
             titles = office_data['Title'].copy()
             scheduler = titles.str.lower().str.contains("scheduler")
             
@@ -236,8 +277,8 @@ if found_reps:
                 bool_map_recs = show_info['Title'].copy()
                 recommendations = show_info[bool_map_recs.str.lower().str.contains(regstr)]
                 
-                show_rec = st.checkbox('Show Recommended Personal', value=True)
-                show_all = st.checkbox('Show All Personal')
+                show_rec = st.checkbox('Show Recommended', value=True)
+                show_all = st.checkbox('Show All')
                     
                 # st.write('###### *Recommended Personal*')
                 if show_rec:
@@ -265,43 +306,72 @@ if email_box_open:
     with choose_who_to_email:
         st.write("## ")
         st.write("#### ")
-        st.write("## Pick a representative to email (Choose one)")
+        st.write("## 2. Pick a representative/template")
         st.markdown("---")
-        col1, col2, col3 = st.columns(3)
-        who_to_email_map = [False, False, False]
-        with col1:
-            if st.checkbox('Senetor ' + email_info_senetor1[2], value=True):
-                who_to_email_map[0] = True
-        with col2:
-            if st.checkbox('Senetor ' + email_info_senetor2[2]):
-                who_to_email_map[1] = True
-        with col3:
-            if st.checkbox('Representative ' + email_info_representative[2]):
-                who_to_email_map[2] = True
+        col1, col2 = st.columns(2)
         
-        # Make sure there is not more than 1 person to email
-        if np.sum(who_to_email_map) == 1:
-            if who_to_email_map[0] == True:
+        # # This create a checkbox to choose the Representative to email
+        # who_to_email_map = [False, False, False]
+        # with col1:
+        #     if st.checkbox('Senator ' + email_info_senetor1[2], value=True):
+        #         who_to_email_map[0] = True
+        # with col2:
+        #     if st.checkbox('Senator ' + email_info_senetor2[2]):
+        #         who_to_email_map[1] = True
+        # with col3:
+        #     if st.checkbox('Representative ' + email_info_representative[2]):
+        #         who_to_email_map[2] = True
+        
+        # # Make sure there is not more than 1 person to email
+        # if np.sum(who_to_email_map) == 1:
+        #     if who_to_email_map[0] == True:
+        #         email_info = email_info_senetor1
+        #     elif who_to_email_map[1] == True:
+        #         email_info = email_info_senetor2
+        #     elif who_to_email_map[2] == True:
+        #         email_info = email_info_representative
+        # else:
+        #     st.error("You can only pick one representative at a time to email.")
+        #     if who_to_email_map[0] == True:
+        #         email_info = email_info_senetor1
+        #     elif who_to_email_map[1] == True:
+        #         email_info = email_info_senetor2
+        #     elif who_to_email_map[2] == True:
+        #         email_info = email_info_representative
+        
+        with col1:
+            # Drop Down to choose the Representative to email
+            poss_reps = ['Senator ' + email_info_senetor1[2], 'Senator ' + email_info_senetor2[2], 'Representative ' + email_info_representative[2]]
+            poss_reps_to_email = st.selectbox('Representative', poss_reps)
+            
+            if poss_reps_to_email == 'Senator ' + email_info_senetor1[2]:
                 email_info = email_info_senetor1
-            elif who_to_email_map[1] == True:
+            elif poss_reps_to_email == 'Senator ' + email_info_senetor2[2]:
                 email_info = email_info_senetor2
-            elif who_to_email_map[2] == True:
+            elif poss_reps_to_email == 'Representative ' + email_info_representative[2]:
                 email_info = email_info_representative
-        else:
-            st.error("You can only pick one representative at a time to email.")
-            if who_to_email_map[0] == True:
-                email_info = email_info_senetor1
-            elif who_to_email_map[1] == True:
-                email_info = email_info_senetor2
-            elif who_to_email_map[2] == True:
-                email_info = email_info_representative
+                
+        with col2:
+            # Drop Down to choose template
+            if not isinstance(templates, list):
+                poss_templates = ["Default"]
+                # subject = None
+                # template_email = None
+            poss_templates_to_use = st.selectbox("Template", templates)
+            
+            if poss_templates_to_use == "Default":
+                pass
+            else:
+                subject = df_template[poss_templates_to_use].loc['Subject']
+                template_email = df_template[poss_templates_to_use].loc['Message']
+                
 
 # Your personal Informaion
 if email_box_open:
     with name_container:
         st.write("## ")
         st.write("#### ")
-        st.write("## Enter Your Information")
+        st.write("## 3. Enter Your Information")
         st.markdown("---")
         col1, col2 = st.columns(2)
             
@@ -358,17 +428,146 @@ if email_box_open:
                                     )
             email_submitted = st.form_submit_button("Generate Email Link")
             
-            if email_submitted:
-                if "" in [viewer_name, viewer_email, cc_email, scheduler_email, subject, message]:
-                    st.error("You must fill in all values except for Bcc. There are several empty responces.")
-                else:
-                    params = {
-                        'to': scheduler_email, 
-                        'su': subject,
-                        'body': message
-                        }
-                    URL_meta_data = urllib.parse.urlencode(params)
-                    email_link_url = ''.join(['https://mail.google.com/mail?view=cm&tf=0&', URL_meta_data])
-                    st.markdown("""[Email Link]({0})""".format(email_link_url), unsafe_allow_html=True)
+            error_message_to_fill_tempate = "Please complete the template. (Fill in the areas that are closed by brackets '[' and/or ']')"
 
-    
+# This makes the buttoms show up outside of the form element above
+if email_submitted:
+    st.write("## ")
+    st.write("#### ")
+    st.write("## 4. Choose your preferred email platform")
+    st.write("---")
+    if "" in [viewer_name, viewer_email, scheduler_email, subject, message]:
+        st.error("You must fill in all values except for CC and Bcc. There are several empty responces.")
+    elif "[" in message:
+        st.error(error_message_to_fill_tempate)
+    elif "]" in message:
+        st.error(error_message_to_fill_tempate)
+    else:
+        # This is for Gmail
+        params = {
+            'to': scheduler_email, 
+            'su': subject,
+            'body': message,
+            'cc': cc_email,
+            'bcc': bcc_email,
+            }
+        URL_meta_data = urllib.parse.urlencode(params)
+        gmail_email_link_url = ''.join(['https://mail.google.com/mail?view=cm&tf=0&', URL_meta_data])
+        
+        # This is for Outlook
+        params = {
+            'to': scheduler_email, 
+            'subject': subject,
+            'body': message,
+            'cc': cc_email,
+            'bcc': bcc_email,
+            }
+        URL_meta_data = urllib.parse.urlencode(params)
+        outlook_email_link_url = ''.join(['https://outlook.office365.com/mail/deeplink/compose?', URL_meta_data])
+        
+        # This is for Yahoo Mail
+        params = {
+            'to': scheduler_email, 
+            'subject': subject,
+            'body': message,
+            'cc': cc_email,
+            'bcc': bcc_email,
+            }
+        URL_meta_data = urllib.parse.urlencode(params)
+        yahoo_email_link_url = ''.join(['https://compose.mail.yahoo.com/?', URL_meta_data])
+        
+        st.write("*Note, using Outlook may take a couple seconds*.")
+        
+        
+        # # This uses Markdown to display the email options.
+        # # Guarenteed to work
+        # col1, col2, col3 = st.columns(3)
+        # with col1:
+        #     st.markdown("""[Gmail Link]({0})""".format(gmail_email_link_url), unsafe_allow_html=True)
+        # with col2:
+        #     st.markdown("""[Outlook Link]({0})""".format(outlook_email_link_url), unsafe_allow_html=True)
+        # with col3:
+        #     st.markdown("""[Yahoo Mail Link]({0})""".format(yahoo_email_link_url), unsafe_allow_html=True)
+        
+        # Use iframe html to display the email options
+        components.html('''<html>
+                            <head>
+                                <style>
+                                    .content__item {
+                                        margin: 0;
+                                        padding: 0;
+                                        counter-increment: itemcounter;
+                                        display: flex;
+                                        flex-direction: row;
+                                        gap: 20px;
+                                        flex-wrap: wrap;
+                                        justify-content: center;
+                                        position: relative;
+                                        z-index: 1;
+                                        pointer-events: none;
+                                    }
+
+                                    .content__item::before {
+                                        color: ##20305b; 
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+
+                                    }
+                                    .button {
+                                        pointer-events: auto;
+                                        cursor: pointer;
+                                        background: #e7e7e7;
+                                        border: none;
+                                        padding: 1.5rem 3rem;
+                                        margin: 0;
+                                        font-family: inherit;
+                                        font-size: inherit;
+                                        position: relative;
+                                        display: inline-block;
+                                    }
+
+                                    .button::before,
+                                    .button::after {
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                    }
+                                    .button--mimas {
+                                        text-transform: uppercase;
+                                        letter-spacing: 0.05rem;
+                                        font-weight: 700;
+                                        font-size: 0.85rem;
+                                        border-radius: 0.5rem;
+                                        overflow: hidden;
+                                        color: #fff;
+                                        background: #e7e7e7;
+                                    }
+
+                                    .button--mimas span {
+                                        position: relative;
+                                        mix-blend-mode: difference;
+                                    }
+
+                                    .button--mimas::before {
+                                        content: '';
+                                        background: #000;
+                                        width: 120%;
+                                        left: -10%;
+                                        transform: skew(30deg);
+                                        transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+                                    }
+
+                                    .button--mimas:hover::before {
+                                        transform: translate3d(100%,0,0);
+                                    }
+                                </style>
+                            </head>
+                            <div class="content__item">
+                                <a target="_blank" href="''' + gmail_email_link_url + '''" class="button button--mimas"><span>Email w/ Gmail</span></a>
+                                <a target="_blank" href="''' + outlook_email_link_url + '''" class="button button--mimas"><span>Email w/ Outlook</span></a>
+                                <a target="_blank" href="''' + yahoo_email_link_url + '''" class="button button--mimas"><span>Email w/ Yahoo</span></a>
+                            </div>
+                        </html>''')
