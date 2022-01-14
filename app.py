@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import re
 import requests
 import urllib.parse
 import streamlit.components.v1 as components
@@ -50,20 +51,22 @@ try:
     df_template = pd.read_csv(template_email_url, index_col='Template_Name')
     
     templates = df_template.columns
+    use_templates = True
 except:
     st.write("There was an error retrieving the PIHE templates")
     templates = None
-    template_email = """Dear {0},
+    use_templates = False
+    template_email = """Dear [SCHEDULER],
  
-My name is {1}, and I am a constituent from {2} interested in access to health care in the U.S. and globally. I also volunteer with Partners In Health Engage, which is a grassroots network of citizens advocating for health care.
+My name is [NAME], and I am a constituent from [ADDRESS] interested in access to health care in the U.S. and globally. I also volunteer with Partners In Health Engage, which is a grassroots network of citizens advocating for health care.
    
-I'd like to schedule a meeting shortly to discuss legislation for strengthening global health systems. I [along with other constituents] am hoping to meet briefly with {3} {4} or a member of their [foreign policy staff/health policy staff] to discuss these important issues. [insert any personal note here (e.g. “I am aware that Rep Chabot is a member of the House Foriegn Affairs committee, and I believe that advancing global health equity is an aligned interest of Partners In Health Engage and HFAC.”)]
+I'd like to schedule a meeting shortly to discuss legislation for strengthening global health systems. I [along with other constituents] am hoping to meet briefly with [REP_OR_SEN] [MOC_NAME] or a member of their [foreign policy staff/health policy staff] to discuss these important issues. [insert any personal note here (e.g. “I am aware that Rep Chabot is a member of the House Foriegn Affairs committee, and I believe that advancing global health equity is an aligned interest of Partners In Health Engage and HFAC.”)]
  
 Would a meeting in the coming days be possible? If so, what times would work well? Thank you very much for considering this request, and I look forward to hearing from you.
  
 Sincerely,
  
-{1}
+[NAME]
 """
     subject = "Meeting Request"
 
@@ -75,6 +78,7 @@ global email_box_open
 email_box_open = False
 normalized_address = None
 email_submitted = False # This is for opening up the email editor
+email_regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$' 
 
 st.sidebar.markdown("""
 # Scheduling Meetings with MOCs
@@ -117,13 +121,16 @@ st.sidebar.markdown("""
 
 ### What are the available templates for this app?
 
-> *Currently, the only templates for this app are from [Partner In Health Engage](https://www.pih.org/organize).*
+> *Currently, the only templates for this app are from [PIH Engage](https://www.pih.org/organize).*
 
 ---
 
-### Thank you for using this app! If there are any issues, please [contact us here](mailto:p.venkata32@yahoo.com).
+#### App Created by `Venkata Patchigolla` - PIH Engage Volunteer Leader.
 
-### Good luck with your advocacy :)
+#### Thank you for using this app! If there are any issues, please [contact me here](mailto:p.venkata32@yahoo.com).
+
+#### Good luck with your advocacy :)
+
 
 """)
 
@@ -177,7 +184,7 @@ def get_mocs():
             
             # The Normalized Addess for the template
             NAR = response_json['normalizedInput']
-            normalized_address = ' '.join([NAR['line1'], NAR['city'] + ',' , NAR['state'], NAR['zip']])
+            normalized_address = ' '.join([NAR['city'] + ',' , NAR['state']])
             
             senetors_info = []
             representative_info = []
@@ -353,11 +360,11 @@ if email_box_open:
                 
         with col2:
             # Drop Down to choose template
-            if not isinstance(templates, list):
+            if use_templates:
+                poss_templates_to_use = st.selectbox("Template", templates)
+            else:
                 poss_templates = ["Default"]
-                # subject = None
-                # template_email = None
-            poss_templates_to_use = st.selectbox("Template", templates)
+                poss_templates_to_use = st.selectbox("Template", poss_templates)
             
             if poss_templates_to_use == "Default":
                 pass
@@ -365,6 +372,12 @@ if email_box_open:
                 subject = df_template[poss_templates_to_use].loc['Subject']
                 template_email = df_template[poss_templates_to_use].loc['Message']
                 
+                if df_template[poss_templates_to_use].isnull().loc['Subject']:
+                    subject = ' '
+                
+                if df_template[poss_templates_to_use].isnull().loc['Message']:
+                    template_email = ' '
+
 
 # Your personal Informaion
 if email_box_open:
@@ -404,13 +417,13 @@ if email_box_open:
                 scheduler_email_value = email_info[0]
                 first_name_int = email_info[3]
                 last_name_int = email_info[4]
-                which_house = "Senetor"
+                which_house = "Senator"
                 rep_name = senetor1.split()[-1].capitalize()
             elif email_info[1] == 'senator2':
                 scheduler_email_value = email_info[0]
                 first_name_int = email_info[3]
                 last_name_int = email_info[4]
-                which_house = "Senetor"
+                which_house = "Senator"
                 rep_name = senetor2.split()[-1].capitalize()
             else:
                 st.write("Error. That's all we know :/")
@@ -418,14 +431,28 @@ if email_box_open:
             
             # This is the scheduler email box
             scheduler_email = st.text_input("Scheduler Email", value=scheduler_email_value, placeholder="Email")
-            message = st.text_area('Message', value=template_email.format(
-                                                    ' '.join([first_name_int.capitalize(), last_name_int.capitalize()]), 
-                                                    viewer_name, 
-                                                    normalized_address, 
-                                                    which_house, 
-                                                    rep_name),
-                                    height=500,
-                                    )
+            
+            # # This is one method of creating an auto filled template. 
+            message = template_email
+            template_email = template_email.replace("[SCHEDULER]", ' '.join([first_name_int.capitalize(), last_name_int.capitalize()]))
+            template_email = template_email.replace("[NAME]", viewer_name)
+            template_email = template_email.replace("[ADDRESS]", normalized_address)
+            template_email = template_email.replace("[REP_OR_SEN]", which_house)
+            template_email = template_email.replace("[MOC_NAME]", rep_name)
+            
+            message = st.text_area("Message", value=template_email, height=500)
+            
+            # Previous method. Less intuitive for making templates
+            # message = st.text_area('Message', value=template_email.format(
+            #                                         ' '.join([first_name_int.capitalize(), last_name_int.capitalize()]), 
+            #                                         viewer_name, 
+            #                                         normalized_address, 
+            #                                         which_house, 
+            #                                         rep_name),
+            #                         height=500,
+            #                         )
+            
+            
             email_submitted = st.form_submit_button("Generate Email Link")
             
             error_message_to_fill_tempate = "Please complete the template. (Fill in the areas that are closed by brackets '[' and/or ']')"
@@ -442,6 +469,8 @@ if email_submitted:
         st.error(error_message_to_fill_tempate)
     elif "]" in message:
         st.error(error_message_to_fill_tempate)
+    # elif not (re.search(email_regex,viewer_email)): # This is to make sure that the email they put in is valid
+    #     st.error("You must enter a valid email address in the *Your Email* section.")
     else:
         # This is for Gmail
         params = {
@@ -463,7 +492,7 @@ if email_submitted:
             'bcc': bcc_email,
             }
         URL_meta_data = urllib.parse.urlencode(params)
-        outlook_email_link_url = ''.join(['https://outlook.office365.com/mail/deeplink/compose?', URL_meta_data])
+        outlook_email_link_url = ''.join(['https://outlook.office.com/mail/deeplink/compose?', URL_meta_data])
         
         # This is for Yahoo Mail
         params = {
@@ -476,7 +505,7 @@ if email_submitted:
         URL_meta_data = urllib.parse.urlencode(params)
         yahoo_email_link_url = ''.join(['https://compose.mail.yahoo.com/?', URL_meta_data])
         
-        st.write("*Note, using Outlook may take a couple seconds*.")
+        st.write("*Note, in order to use Outlook, you must be signed in the browser for the link to function*.")
         
         
         # # This uses Markdown to display the email options.
