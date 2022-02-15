@@ -12,4 +12,4 @@ echo "\
 email = \"venkata.patchigolla@uconn.edu\"\n\
 " > ~/.streamlit/credentials.toml 
 
-echo "API_KEY = \"AIzaSyAPgf37h-eTSW5SiBG28gpiRnghfZOwAY4\"" > ~/.streamlit/secrets.toml
+echo "API_KEY = \"API-KEY\"" > ~/.streamlit/secrets.toml
